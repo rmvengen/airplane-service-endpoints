@@ -14,6 +14,7 @@ var AirportSchema = new mongoose.Schema({
     airportName: String,
     airportCity: String,
     airporLat: Number,
+    airportLon: Number,
     airportElevation: Number,
     runways: [RunwaySchema]
 });

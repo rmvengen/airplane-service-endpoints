@@ -15,7 +15,7 @@ mongoose.connection.on('connected', function(){
 mongoose.connection.on('error', function(err){
     console.log('Mongoose connection error: ' + err);
 });
-mongose.connection.on('disconnected', function(){
+mongoose.connection.on('disconnected', function(){
     console.log('Mongoose disconnected');
 });
 
@@ -25,10 +25,10 @@ gracefulShutdown- function(msg, callback){
         console.log('Mongoose disconnected through ' + msg);
         callback();
     });
-});
+};
 //Nodemon to restarts
 process.once('SIGUSR2', function(){
-    gracefulShutdown('nodemon restart', functio() {
+    gracefulShutdown('nodemon restart', function() {
         process.kill(process.pid, 'SIGUSR2');
     });
 });

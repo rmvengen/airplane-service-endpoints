@@ -11,14 +11,18 @@ var ctrlAirportData = require('../controllers/airport');
 //router.get('/climbdata/:weight', ctrlClimbData.findclimb);    
 
 //CLIMB DATA
-router.get('/climbData/:weight', ctrlAirplaneData.climbDataReadOne);
-router.get('/climbData', ctrlAirplaneData.climbDataReadAll);
+router.get('/ClimbData/:weight', ctrlAirplaneData.climbDataReadOne);
+router.get('/ClimbData', ctrlAirplaneData.climbDataReadAll);
 
 //Landing Data
-router.get('/landingData/:weight', ctrlAirplaneData.landingDataReadOne);
+router.get('/LandingData/:weight', ctrlAirplaneData.landingDataReadOne);
 
 //AIrport Data
 router.get('/airportData', ctrlAirportData.airportDataReadAll);
+//router.get('/airplaneData', ctrlAirportData.airportDataReadAll);
+
+//TakeOffData
+router.get('/TakeOffData', ctrlAirplaneData.takeOffDataReadOne);
 
 module.exports = router;
       

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var ClimbData = mongoose.model('Climbdata');
+var ClimbData = mongoose.model('ClimbData');
 var TakeOffData = mongoose.model('TakeOffData');
 var LandingData = mongoose.model('LandingData');
 
@@ -33,12 +33,17 @@ module.exports.climbDataReadOne = function(req, res){
         .find({
             weight: req.params.weight
         })
-        exec(function(err, climbData){
+        .exec(function(err, climbData){
             if(!climbData){
                 sendJSONresponse(res, 404,{
-                    "message": "weight value nto found"
+                    "message": "weight value not found"
                 });
-                reutrn;
+                return;
+            }
+            else if (err){
+                console.log(err);
+                sendJSONresponse(res,404, err);
+                return;
             }
             console.log(climbData);
             sendJSONresponse(res, 200, climbData);
@@ -51,9 +56,59 @@ module.exports.climbDataReadOne = function(req, res){
         });
     }
 };
+//TakeOffData
+module.exports.takeOffDataReadOne = function(req, res) {
+    console.log('Finding Climb Data Record', req.params);
+    if (req.params && req.params.weight) {
+        TakeOffData
+            .find({
+                weight: req.params.weight,
+            })
+            .exec(function(err, takeOffData) {
+                if (!takeOffData) {
+                    sendJSONresponse(res, 404, {
+                        "message": "weight value not found"
+                    });
+                    return;
+                }
+                else if (err) {
+                    console.log(err);
+                    sendJSONresponse(res, 404, err);
+                    return;
+                }
+                console.log(takeOffData);
+                sendJSONresponse(res, 200, takeOffData);
+            });
+    }
+    else {
+        console.log('No weight value specified');
+        sendJSONresponse(res, 404, {
+            "message": "No weight value in request"
+        });
+    }
+};
+
+
 
 //Landing Data
-// GETG LandingData by weight
+
+//// LANDING DATA //////////////////////////////////////////////////////////////
+/* GET LandingData by weight */
+/*module.exports.landingdataReadAll = function(req, res) {
+    console.log("Finding all Climb Data Records", req);
+    LandingData
+        .find({})
+        .exec(function(err, landingData) {
+            if (err) {
+                console.log(err);
+                sendJSONresponse(res, 404, err);
+            }
+            console.log(landingData);
+            sendJSONresponse(res, 200, landingData);
+        });
+};
+*/
+
 module.exports.landingDataReadOne = function(req, res) {
     console.log('Finding Climb Data Record', req.params);
     if (req.params && req.params.weight) {
@@ -84,7 +139,6 @@ module.exports.landingDataReadOne = function(req, res) {
         });
     }
 };
-
 
 
 

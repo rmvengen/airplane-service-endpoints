@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var AirportData = mongoose.model('AirportDat');
+var AirportData = mongoose.model('AirportData');
 
 //utility method for the module
 var sendJSONresponse = function(res, status, content)

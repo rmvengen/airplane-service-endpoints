@@ -7,7 +7,7 @@ var ClimbDataSchema = new mongoose.Schema({
     vfriFlap15 : Number,
     vClmb : Number
 });
-mongoose.model('Climbdata', ClimbDataSchema, 'Climbdata');
+mongoose.model('ClimbData', ClimbDataSchema, 'ClimbData');
 //var climbData = mongoose.model('climbdata', climbDataSchema, 'climbdata');
 
 var TakeOffSchema = new mongoose.Schema({
@@ -23,7 +23,7 @@ var TakeOffSchema = new mongoose.Schema({
 
 mongoose.model('TakeOffData', TakeOffSchema, 'TakeOffData');
 
-var LandingSchema = new mongoose({
+var LandingSchema = new mongoose.Schema({
     flaps: Number,
     weight: Number,
     Vapp: Number,
